@@ -46,7 +46,6 @@ minecraft {
             source sourceSets.main
         }
     }
-    }
 }
 
 dependencies {
@@ -75,18 +74,18 @@ dependencies {
 
 }
 
-processResources {
-    inputs.property "version", project.version
-
-    from(sourceSets.main.resources.srcDirs) {
-        include '**/*.toml'
-
-        expand 'version': project.version
-    }
-    from(sourceSets.main.resources.srcDirs) {
-        exclude '**/*.toml'
-    }
-}
+//processResources {
+//    inputs.property "version", project.version
+//
+//    from(sourceSets.main.resources.srcDirs) {
+//        include '**/*.toml'
+//
+//        expand 'version': project.version
+//    }
+//    from(sourceSets.main.resources.srcDirs) {
+//        exclude '**/*.toml'
+//    }
+//}
 
 // Example for how to get properties into the manifest for reading by the runtime..
 jar {
@@ -116,7 +115,7 @@ task sourcesJar(type: Jar) {
     from sourceSets.main.allJava
 }
 
-tasks.build.dependsOn apiJar, sourcesJar
+tasks.build.dependsOn sourcesJar
 
 tasks.withType(JavaCompile) { task ->
     task.options.encoding = 'UTF-8'
